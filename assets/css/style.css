@@ -1,4 +1,4 @@
-* {
+body {
     background-color: black;
 }
 
@@ -20,4 +20,14 @@
 .btns {
     margin: 15px;
     background-color: black;
+}
+
+.btn {
+    margin: 2px;
+    background-color: white;
+}
+
+.gif {
+    margin: 2px;
+    background-color: white;
 }

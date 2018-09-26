@@ -1,8 +1,16 @@
 // create an array of strings that is related to a topic that interests me
 // save it in a variable called topics
-var topics = ["Dungeons and Dragons", "Critical Role", "Dungeon Master",
-            "Videogames", "Creativity", "Learning", "Painting", "Writing",
-            "Reading", "Math", "Physics", "Drawing", "Puzzles"];
+var criticalRole = {
+    name: "Critical Role",
+    campaign1: ["Vax'ildan", "Vex'ahlia", "Pike", "Grog",
+            "Scanlan", "Percy", "Tiberius", "Keyleth"],
+    campaign2: ["Fjord", "Beauregard", "Caleb",
+                "Nott", "Jester", "Mollymauk", "Yasha"]
+},
+    topics = ["Dungeons and Dragons", "DnD", criticalRole.name,
+            criticalRole.campaign1, criticalRole.campaign2,
+            "Dungeon Master", "Videogames", "Creativity", "Learning",
+            "Painting", "Writing", "Reading", "Math", "Physics", "Drawing", "Puzzles"];
 
 // take the topics above and create a button on the page for every individual topic
 // empty the text that will contain the buttons
@@ -11,10 +19,18 @@ function renderButtons() {
     $(".btns").text("");
     // loop through the array that contains my topics of interest and create buttons for each topic
     for ( let i = 0; i < topics.length; i++) {
-        var newBtn = $("<button class='btn' id='btn btn-choice'>");
-        newBtn.attr("style", "margin: 2px; background-color: white;");
-        newBtn.attr("data-name", topics[i].trim().replace(/\s/g, "")).text(topics[i]);
-        $(".btns").append(newBtn);
+        // if the index of topics sends me to another array then I also need to loop through that array too
+        if ( Array.isArray(topics[i]) ) {
+            for ( let j = 0; j < topics[i].length; j++ ) {
+                var newBtn = $("<button class='btn' id='btn btn-choice'>");
+                newBtn.attr("data-name", topics[i][j].trim().replace(/\s/g, "")).text(topics[i][j]);
+                $(".btns").append(newBtn);
+            }
+        } else {
+            var newBtn = $("<button class='btn' id='btn btn-choice'>");
+            newBtn.attr("data-name", topics[i].trim().replace(/\s/g, "")).text(topics[i]);
+            $(".btns").append(newBtn);
+        }
     }
 }
 
@@ -46,7 +62,6 @@ function searchGiphy(searchTerm) {
             // give the new image tag some content
             img.attr("src", imageURL).attr("data-still", imageURL);
             img.attr("data-animate", imageGIF).attr("data-state", "still");
-            img.attr("style", "margin: 5px;");
             // add the img to the page
             $("#images").prepend(img, p);
         }
