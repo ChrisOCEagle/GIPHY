@@ -12,6 +12,7 @@ function renderButtons() {
     // loop through the array that contains my topics of interest and create buttons for each topic
     for ( let i = 0; i < topics.length; i++) {
         var newBtn = $("<button class='btn' id='btn btn-choice'>");
+        newBtn.attr("style", "margin: 2px; background-color: white;");
         newBtn.attr("data-name", topics[i].trim().replace(/\s/g, "")).text(topics[i]);
         $(".btns").append(newBtn);
     }
@@ -43,8 +44,9 @@ function searchGiphy(searchTerm) {
             var img = $("<img class='gif'>"),
                 p = $("<p>").text(ratings);
             // give the new image tag some content
-            img.attr("src", imageURL).attr("data-still", imageURL)
-            img.attr("data-animate", imageGIF).attr("data-state", "still")
+            img.attr("src", imageURL).attr("data-still", imageURL);
+            img.attr("data-animate", imageGIF).attr("data-state", "still");
+            img.attr("style", "margin: 5px;");
             // add the img to the page
             $("#images").prepend(img, p);
         }

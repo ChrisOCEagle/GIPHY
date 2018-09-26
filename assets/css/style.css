@@ -1,0 +1,23 @@
+* {
+    background-color: black;
+}
+
+#input-form {
+    float: right;
+    margin: 15px;
+}
+
+#topic-input {
+    margin: 5px;
+    background-color: white;
+}
+
+#add-topic {
+    margin: 5px;
+    background-color: white;
+}
+
+.btns {
+    margin: 15px;
+    background-color: black;
+}
